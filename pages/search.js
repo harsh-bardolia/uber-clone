@@ -1,12 +1,11 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
+import { StarIcon } from '@heroicons/react/24/outline';
 
 function Search() {
-
-  const [pickup , setPickUp] = useState('');
-  const [dropoff , setDropOff] = useState('');
-
+  const [pickup, setPickUp] = useState("");
+  const [dropoff, setDropOff] = useState("");
 
   return (
     <Wrapper>
@@ -26,16 +25,16 @@ function Search() {
         </FromToIcons>
 
         <InputBoxes>
-          <Input 
-            placeholder="Choose starting point" 
+          <Input
+            placeholder="Choose starting point"
             value={pickup}
-            onChange={(e)=> setPickUp( e.target.value)}
+            onChange={(e) => setPickUp(e.target.value)}
           />
-          <Input 
+          <Input
             placeholder="To Destination"
-            value={dropoff}  
-            onChange={(e)=> setDropOff(e.target.value)}
-           />
+            value={dropoff}
+            onChange={(e) => setDropOff(e.target.value)}
+          />
         </InputBoxes>
         <PlusIcon src="https://img.icons8.com/ios/50/00000/plus-math.png" />
       </InputContainer>
@@ -43,18 +42,21 @@ function Search() {
       {/* Saved Places  */}
 
       <SavedPlaces>
-        <StarIcon src="https://img.icons8.com/ios-filled" />
-        Saved Places
+        {/* <StarIcon src="https://img.icons8.com/ios-filled" /> */}
+        <StarIcon className="text-white h-10 w-10 bg-gray-400 rounded-full p-2 " />
+        <p className="pl-1">Saved Places</p>
       </SavedPlaces>
 
       {/* Confirm Locations */}
-      <Link href={{
-        pathname:'/confirm',
-        query:{
-          pickup:pickup,
-          dropoff: dropoff
-        }
-      }}>
+      <Link
+        href={{
+          pathname: "/confirm",
+          query: {
+            pickup: pickup,
+            dropoff: dropoff,
+          },
+        }}
+      >
         <ConfirmButtonContainer>Confirm Locations</ConfirmButtonContainer>
       </Link>
     </Wrapper>
@@ -101,9 +103,9 @@ const PlusIcon = tw.img`
 const SavedPlaces = tw.div`
   flex items-center bg-white px-4 py-2
 `;
-const StarIcon = tw.img`
-  bg-gray-400 h-10 w-10 rounded-full p-2
-`;
+// const StarIcon = tw.img`
+//   bg-gray-400 h-10 w-10 rounded-full p-2
+// `;
 
 const ConfirmButtonContainer = tw.div`
   bg-black text-white mt-2 mx-4 text-center py-3 px-4 text-lg cursor-pointer

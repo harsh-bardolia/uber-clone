@@ -19,6 +19,7 @@ const CarInfo = ({ pickupCoordinates, dropOffCoordinates }) => {
     // let distance = Math.sqrt((Math.pow(dropOffCoordinates[0] - pickupCoordinates[0]),2) + (Math.pow(dropOffCoordinates[1] - pickupCoordinates[1]),2));
   }, [dropOffCoordinates,pickupCoordinates]);
 
+
   return (
     <Wrapper>
       <CarTitle>Choose a ride, or swipe up for more!</CarTitle>
@@ -51,7 +52,7 @@ const CarList = tw.div`
   overflow-y-scroll 
 `;
 const Car = tw.div`
-  flex p-4 items-center text-sm border-b 
+  flex p-4 items-center text-sm border-b blueBorder:border-blue
 `;
 const CarImage = tw.img`
   h-14 mr-4

@@ -95,5 +95,5 @@ const ConfirmButtonContainer = tw.div`
   border-t-2
 `;
 const ConfirmButton = tw.div`
-bg-black text-white mx-4 my-4 py-4 text-center text-xl cursor-pointer
+bg-black text-white mx-4 my-4 py-4 text-center text-xl cursor-pointer 
 `;

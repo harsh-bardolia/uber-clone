@@ -1,15 +1,34 @@
 import React from 'react'
 import tw from "tailwind-styled-components";
+import { useEffect} from "react";
+// import tw from "tailwind-styled-components";
+import { useRouter } from "next/router";
+import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import {auth, provider} from '../firebase';
 
 const Login = () => {
+
+  const router= useRouter()
+
+  useEffect(()=>{
+
+    onAuthStateChanged(auth , user =>{
+      if(user){
+        router.push('/')
+      }
+    })
+
+  },[])
+
   return (
     <Wrapper>
         <UberLogo src="https://i.ibb.co/ZMhy8ws/uber-logo.jpg" />
-        <LoginInTo>
+        <Title>
             Log in to access your account
-        </LoginInTo>
+        </Title>
+        <HeadImage src="https://i.ibb.co/CsV9RYZ/login-logo.jpg"/>
 
-        <SignInButton>Sign in with Google</SignInButton>
+        <SignInButton onClick={()=>signInWithPopup(auth , provider)}>Sign in with Google</SignInButton>
     </Wrapper>
   )
 }
@@ -21,13 +40,16 @@ const Wrapper=tw.div`
 `
 
 const UberLogo = tw.img`
-  flex-1 h-20 m-2
+  h-20 w-auto self-start object-contain
+`;
+const HeadImage = tw.img`
+  h-64 w-full self-start object-contain
 `;
 
-const LoginInTo = tw.div`
-  text-4xl ml-3 mr-4
+const Title = tw.div`
+  text-5xl pt-4 text-gray-500
 `;
 
 const SignInButton=tw.button`
-    bg-black text-white py-4 px-8 mt-8 text-center self-center w-full
+  bg-black text-white py-4 px-8 mt-8 text-center self-center w-full
 `
