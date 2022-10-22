@@ -15,22 +15,27 @@ const Confirm = () => {
 
   const getPickupCoordinates = (pickup) => {
     // const pickup = "Dwarka";
-    fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
+    try{
+      fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
         new URLSearchParams({
           access_token:
-            "pk.eyJ1IjoiY3lsYW4tZXZlciIsImEiOiJjbDh6b29zMGYwMjN3M3BvM2NwZG9wejZqIn0.4wyuP6XQAACiN0bPpS0-vw",
+          "pk.eyJ1IjoiY3lsYW4tZXZlciIsImEiOiJjbDh6b29zMGYwMjN3M3BvM2NwZG9wejZqIn0.4wyuP6XQAACiN0bPpS0-vw",
           limit: 1,
         })
-    )
-      .then((Response) => Response.json())
-      .then((data) => {
-        setpickupCoordinates(data.features[0].center);
-      });
+        )
+        .then((Response) => Response.json())
+        .then((data) => {
+          setpickupCoordinates(data.features[0].center);
+        });
+      }catch(error){
+        return error
+      }
   };
 
   const getDropOffCoordinates = (dropoff) => {
     // const dropoff = "Rajkot";
+    try{
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
         new URLSearchParams({
@@ -43,6 +48,9 @@ const Confirm = () => {
       .then((data) => {
         setSetDropOffCoordinates(data.features[0].center);
       });
+    }catch(error){
+      return error
+    }
   };
 
   useEffect(() => {

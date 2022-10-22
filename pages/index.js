@@ -7,7 +7,7 @@ import Link from "next/link";
 import { auth, provider } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-import { StarIcon } from '@heroicons/react/24/solid'
+import { BeakerIcon, StarIcon } from '@heroicons/react/24/solid'
 
 function MyComponent() {
   return (
