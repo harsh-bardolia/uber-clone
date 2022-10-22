@@ -32,6 +32,7 @@ export default function Home() {
         });
       } else {
         setUser(null);
+        // Login Not Required
         // router.push("/login");
       }
     });
