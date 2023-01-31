@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
 import { StarIcon } from '@heroicons/react/24/outline';
@@ -6,7 +6,8 @@ import { StarIcon } from '@heroicons/react/24/outline';
 function Search() {
   const [pickup, setPickUp] = useState("");
   const [dropoff, setDropOff] = useState("");
-
+  console.log(pickup);
+  console.log(dropoff);
   return (
     <Wrapper>
       {/* Button Container */}
